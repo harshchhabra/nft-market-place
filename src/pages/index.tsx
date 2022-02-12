@@ -32,7 +32,7 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className="p-10 footer bg-base-200 text-base-content">
+      {/* <footer className="p-10 footer bg-base-200 text-base-content">
         <div>
           <span className="footer-title">Document</span>
           <a
@@ -67,7 +67,7 @@ function App() {
             <img src="https://vercel.com/button" alt="Deploy with Vercel" />
           </a>
         </div>
-      </footer>
+      </footer> */}
     </Web3ReactProvider>
   );
 }
