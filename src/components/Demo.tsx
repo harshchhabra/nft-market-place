@@ -54,9 +54,39 @@ export default function Demo() {
   const connected = (connection: typeof injected | typeof walletconnect) => connection === connector;
   const disabled = !triedEager || !!activatingConnector || connected(injected) || connected(walletconnect) || !!error;
   return (
-    <>
+    <header id="header_main" className="header_1 js-header">
       <Header />
-      <div>
+      <div className="mode_switcher">
+        {connected(injected) ? (
+          <h6>
+            Connected Wallet{" "}
+            <strong
+              onClick={() => {
+                if (connected(walletconnect)) {
+                  (connector as any).close();
+                }
+                deactivate();
+              }}
+            >
+              Disconnect
+            </strong>
+          </h6>
+        ) : (
+          <h6>
+            Click here Connect to{" "}
+            <strong
+              onClick={() => {
+                setActivatingConnector(injected);
+                activate(injected);
+              }}
+            >
+              Wallet
+            </strong>
+          </h6>
+        )}
+        <h6></h6>
+      </div>
+      {/* <div>
         <span>
           {chainId == 80001 ? (
             ""
@@ -67,7 +97,7 @@ export default function Demo() {
                 <div className="card bordered">
                   {/* <figure>
                       <img className="h-24" src="https://metamask.io/images/mm-logo.svg" alt="metamask" />
-                    </figure> */}
+                    </figure> 
                   <div className="card-body">
                     <h2 className="card-title">
                       <a className="link link-hover" href="https://metamask.io/" target="_blank" rel="noreferrer">
@@ -119,7 +149,7 @@ export default function Demo() {
             </div>
           )}
         </span>
-      </div>
-    </>
+      </div> */}
+    </header>
   );
 }
